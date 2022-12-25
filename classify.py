@@ -6,6 +6,7 @@ import glasses
 import skin
 import avatar
 import face_shape
+import nose_shape
 
 def cropFace(path):
      detector = dlib.get_frontal_face_detector()
@@ -81,8 +82,9 @@ def findFeatures(img, path):
                temp.append(x)
                temp.append(y)
                nose.append(temp)
-          hasGlasses = glasses.findGlasses(img, nose)
-          
+          #hasGlasses = glasses.findGlasses(img, nose)
+          hasGlasses = False
+
           #Skin Color
           eye = []
           for n in range(36, 42):
@@ -93,6 +95,20 @@ def findFeatures(img, path):
                temp.append(y)
                eye.append(temp)
           skin_tone = skin.getSkinColor(img, eye, nose)
+
+          lips = []
+          for n in range(48, 68):
+               temp = []
+               x = landmarks.part(n).x
+               y = landmarks.part(n).y
+               temp.append(x)
+               temp.append(y)
+               lips.append(temp)
+          
+          if(hasGlasses == False):
+               noseInfo = nose_shape.getNoseShape(img, nose, lips)
+               # Get Eyes (ML?)
+               pass
 
           old_x = 0
           old_y = 0
@@ -109,11 +125,11 @@ def findFeatures(img, path):
      pass
 
 # Input
-imagePath = "/Users/xocoo/Desktop/Projects/AvatarCreator/images/dark.jpg"
+imagePath = "/Users/xocoo/Desktop/Projects/AvatarCreator/images/hawk.jpg"
 predictorPath = "/Users/xocoo/Desktop/Projects/AvatarCreator/predictor.dat"
 cropped = cropFace(imagePath)
 findFeatures(cropped, predictorPath)
 
-# cv2.imshow(winname="Face", mat=cropped)
-# cv2.waitKey(delay=0)
-# cv2.destroyAllWindows()
+cv2.imshow(winname="Face", mat=cropped)
+cv2.waitKey(delay=0)
+cv2.destroyAllWindows()
