@@ -29,6 +29,6 @@ def createAvatar(gender, glasses, eyebrows, skin_tone):
      path = path + file_name + ".obj"
      mesh = vedo.Mesh(path,)
      mesh.texture("/Users/xocoo/Desktop/Projects/AvatarCreator/avatar/texture.png", scale=0.1)
-     #mesh.show()
+     mesh.show()
 
      print(file_name)

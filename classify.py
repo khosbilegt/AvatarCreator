@@ -82,8 +82,8 @@ def findFeatures(img, path):
                temp.append(x)
                temp.append(y)
                nose.append(temp)
-          #hasGlasses = glasses.findGlasses(img, nose)
-          hasGlasses = False
+          hasGlasses = glasses.findGlasses(img, nose)
+          #hasGlasses = False
 
           #Skin Color
           eye = []
@@ -110,26 +110,26 @@ def findFeatures(img, path):
                # Get Eyes (ML?)
                pass
 
-          old_x = 0
-          old_y = 0
-          for n in range(0, 67):
-               x = landmarks.part(n).x
-               y = landmarks.part(n).y
-               # Draw a circle
-               cv2.line(img, (old_x, old_y), (x, y), (0, 255, 0), thickness = 1)
-               cv2.circle(img=img, center=(x, y), radius=3, color=(0, 255, 0), thickness=-1)
-               old_x = x
-               old_y = y
+          # old_x = 0
+          # old_y = 0
+          # for n in range(17, 22):
+          #      x = landmarks.part(n).x
+          #      y = landmarks.part(n).y
+          #      # Draw a circle
+          #      cv2.line(img, (old_x, old_y), (x, y), (0, 255, 0), thickness = 1)
+          #      cv2.circle(img=img, center=(x, y), radius=3, color=(0, 255, 0), thickness=-1)
+          #      old_x = x
+          #      old_y = y
 
           avatar.createAvatar("male", hasGlasses, eyebrowType, skin_tone)
      pass
 
 # Input
-imagePath = "/Users/xocoo/Desktop/Projects/AvatarCreator/images/hawk.jpg"
+imagePath = "/Users/xocoo/Desktop/Projects/AvatarCreator/images/dark.jpg"
 predictorPath = "/Users/xocoo/Desktop/Projects/AvatarCreator/predictor.dat"
 cropped = cropFace(imagePath)
 findFeatures(cropped, predictorPath)
 
-cv2.imshow(winname="Face", mat=cropped)
-cv2.waitKey(delay=0)
-cv2.destroyAllWindows()
+# cv2.imshow(winname="Face", mat=cropped)
+# cv2.waitKey(delay=0)
+# cv2.destroyAllWindows()

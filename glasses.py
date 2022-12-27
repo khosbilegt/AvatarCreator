@@ -24,7 +24,7 @@ def findGlasses(img, nose):
      edges = cv2.Canny(image =blur, threshold1=100, threshold2=200)
      edges_center = edges.T[(int(len(edges.T)/2))]
      
-     # cv2.imshow(winname="Face", mat=cropped)
+     # cv2.imshow(winname="Face", mat=edges)
      # cv2.waitKey(delay=0)
      # cv2.destroyAllWindows()
      

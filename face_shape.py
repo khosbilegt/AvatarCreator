@@ -16,7 +16,11 @@ def getFaceShape(img, jaw):
      # round_y = (jaw[2][1] + jaw[len(jaw) - 2][1]) / 2
      # radius = int((jaw[len(jaw) - 1][0] - jaw[0][0]) / 2)
      # center = (int(round_x), int(round_y))
-     # cv2.circle(img, center, radius, (0, 0, 0), 2)
+     # # cv2.circle(img, center, radius, (0, 0, 0), 2)
+     # cv2.circle(img=img, center=(jaw[1]), radius=10, color=(0, 255, 0), thickness=-1)
+     # cv2.circle(img=img, center=(jaw[3]), radius=10, color=(0, 255, 0), thickness=-1)
+     # cv2.circle(img=img, center=(jaw[-2]), radius=10, color=(0, 255, 0), thickness=-1)
+     # cv2.circle(img=img, center=(jaw[-4]), radius=10, color=(0, 255, 0), thickness=-1)
 
      # Check Round
      above_cheek = findDistance(jaw[1], jaw[-2])
